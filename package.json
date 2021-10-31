@@ -1,0 +1,31 @@
+{
+    "name": "Desafio14",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon ./src/server.js --port 3000"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.0.1",
+        "nodemon": "^2.0.14"
+    },
+    "dependencies": {
+        "child_process": "^1.0.2",
+        "connect-mongodb-session": "^3.1.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.4",
+        "express-session": "^1.17.2",
+        "faker": "^5.5.3",
+        "minimist": "^1.2.5",
+        "mongoose": "^6.0.12",
+        "passport": "^0.5.0",
+        "passport-facebook": "^3.0.0"
+    }
+}
