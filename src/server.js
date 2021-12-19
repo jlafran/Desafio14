@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import bluebird from 'bluebird';
+import mongoose from 'mongoose'
 dotenv.config();
 
 const { MONGODB_URI, SECRET, NODE_ENV } = process.env;
@@ -6,19 +8,34 @@ const { MONGODB_URI, SECRET, NODE_ENV } = process.env;
 import express from 'express';
 const app = express();
 
+
+//Database connection --
+mongoose.Promise = bluebird;
+let url = `${process.env.MONGO_URI}`
+console.log("BD",url);
+let opts = {
+  useNewUrlParser : true, 
+  connectTimeoutMS:20000, 
+  useUnifiedTopology: true
+  };
+
+mongoose.connect(url,opts)
+  .then(() => {
+    console.log(`Succesfully Connected to theMongodb Database..`)
+  })
+  .catch((e) => {
+    console.log(`Error Connecting to the Mongodb Database...`),
+    console.log(e)
+  })
+
 // Session
 import session from 'express-session';
 import MongoSession from 'connect-mongodb-session';
 
 const MongoStore = MongoSession(session);
 
-const store = new MongoStore({
-    uri: MONGODB_URI,
-    collection: 'session'
-});
-
 app.use(session({
-    store,
+    url,
     resave: true,
     saveUninitialized: true,
     secret: SECRET,

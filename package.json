@@ -16,6 +16,7 @@
         "nodemon": "^2.0.14"
     },
     "dependencies": {
+        "bluebird": "^3.7.2",
         "child_process": "^1.0.2",
         "connect-mongodb-session": "^3.1.1",
         "dotenv": "^10.0.0",
